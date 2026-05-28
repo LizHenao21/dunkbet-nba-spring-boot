@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>DunkBet - Registrar Partido</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/es.js"></script>
+</head>
+<body class="container mt-4">
+
+    <h2>Registrar Nuevo Partido NBA</h2>
+    <p class="text-secondary">Ingresa los detalles del próximo encuentro para habilitar las apuestas.</p>
+    <hr>
+
+    <div th:if="${error}" class="alert alert-danger text-center" role="alert">
+        <span th:text="${error}"></span>
+    </div>
+
+    <form th:action="@{/admin/partidos/guardar}" method="POST" class="row g-3">
+        
+        <h3>Detalles de los Equipos</h3>
+        
+        <div class="col-md-6">
+            <label class="form-label">Equipo Local</label>
+            <input type="text" name="equipoLocal" class="form-control" placeholder="Ej: Los Angeles Lakers" required>
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label">Equipo Visitante</label>
+            <input type="text" name="equipoVisitante" class="form-control" placeholder="Ej: Boston Celtics" required>
+        </div>
+
+        <h3 class="mt-4">Fecha y Ubicación</h3>
+
+        <div class="col-md-4">
+            <label class="form-label">Fecha del Partido</label>
+            <input type="text" id="calendarioJS" name="fecha" class="form-control" placeholder="Selecciona la fecha" required>
+        </div>
+
+        <div class="col-md-4">
+            <label class="form-label">Hora del Partido</label>
+            <input type="text" id="relojJS" name="hora" class="form-control" placeholder="Selecciona la hora" required>
+        </div>
+
+        <div class="col-md-4">
+            <label class="form-label">Lugar / Estadio</label>
+            <input type="text" name="lugar" class="form-control" placeholder="Ej: Crypto.com Arena" required>
+        </div>
+
+        <div class="col-md-4 mt-4">
+            <label class="form-label">Estado Inicial</label>
+            <select name="estado" class="form-select" required>
+            <option value="abierto">Disponible (Abierto)</option>
+            <option value="cerrado">Cerrado</option>
+            </select>
+        </div>
+
+        <div class="col-12 mt-4">
+            <button type="submit" class="btn btn-success">Guardar Partido</button>
+            <a th:href="@{/admin/dashboard}" class="btn btn-secondary">Regresar</a>
+        </div>
+    </form>
+
+    <script>
+        // Inicializar Calendario JS
+        flatpickr("#calendarioJS", {
+            locale: "es",
+            dateFormat: "Y-m-d",
+            minDate: "today"
+        });
+
+        // Inicializar Reloj JS
+        flatpickr("#relojJS", {
+            enableTime: true,
+            noCalendar: true, 
+            dateFormat: "H:i",
+            time_24hr: true
+        });
+    </script>
+</body>
+</html>

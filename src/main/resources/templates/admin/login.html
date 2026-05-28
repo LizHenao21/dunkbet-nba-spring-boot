@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>DunkBet - Login Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-5">
+
+    <div class="row justify-content-center">
+        <div class="col-md-5 mt-5">
+            <h2>Ingreso de Administrador</h2>
+            <p class="text-secondary">Digita tus credenciales para gestionar el sistema.</p>
+            <hr>
+
+            <div th:if="${error}" class="alert alert-danger text-center" role="alert">
+                <span th:text="${error}"></span>
+            </div>
+            <form th:action="@{/admin/login}" method="POST">
+                <div class="mb-3">
+                    <label class="form-label">Usuario</label>
+                    <input type="text" name="username" class="form-control" placeholder="admin" required>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label">Contraseña</label>
+                    <input type="password" name="password" class="form-control" placeholder="******" required>
+                </div>
+
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                    <a th:href="@{/index}" class="btn btn-secondary">Regresar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
