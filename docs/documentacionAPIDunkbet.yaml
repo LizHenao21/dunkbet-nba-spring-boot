@@ -1,0 +1,178 @@
+openapi: 3.0.1
+info:
+  title: API Apuestas de Baloncesto Dunkbet
+  description: Esta API se encarga de manejar la información de la base de datos de Dunkbet para gestionar las apuestas de sus usuarios y la administración de partidos de la NBA.
+  version: 1.0.0
+servers:
+- url: https://virtserver.swaggerhub.com/udea-307/Dunkbet/1.0.0
+  description: SwaggerHub API Auto Mocking
+- url: http://localhost:8080
+  description: Servidor Local de Desarrollo
+tags:
+- name: Apuestas
+  description: "Endpoints encargados de la gestión, registro e historial de apuestas de los usuarios."
+- name: Partidos
+  description: "Endpoints destinados a la administración, liquidación y limpieza de encuentros deportivos."
+paths:
+  /api/docs/apuestas/guardar:
+    post:
+      tags:
+      - Apuestas
+      summary: Registrar nueva apuesta
+      description: "Procesa el registro de un juego enviado por el usuario a través del formulario continuo, valida la mayoría de edad y calcula las ganancias potenciales de forma dinámica."
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/apuestas_guardar_body"
+        required: true
+      responses:
+        "200":
+          description: Apuesta registrada exitosamente. Retorna confirmación o redirección.
+          content:
+            text/html:
+              schema:
+                type: string
+        "400":
+          description: "Petición incorrecta por datos inválidos, menor de edad o violación de reglas de negocio."
+  /api/docs/apuestas/historial:
+    get:
+      tags:
+      - Apuestas
+      summary: Ver historial por documento
+      description: Consulta y devuelve la lista completa de apuestas realizadas bajo un número de documento específico sin recargar la página.
+      parameters:
+      - name: documento
+        in: query
+        description: Número de documento de identidad único del cliente a consultar.
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Historial de apuestas obtenido correctamente.
+          content:
+            text/html:
+              schema:
+                type: string
+        "400":
+          description: "Número de documento inválido, vacío o con formato erróneo."
+  /api/docs/partidos/liquidar:
+    post:
+      tags:
+      - Partidos
+      summary: Cerrar y liquidar apuestas de un partido
+      description: "Registra el marcador final de un partido abierto, calcula de forma masiva quiénes ganaron o perdieron y cambia el estado del partido a CERRADO."
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/partidos_liquidar_body"
+        required: true
+      responses:
+        "200":
+          description: Partido cerrado y apuestas liquidadas exitosamente.
+        "400":
+          description: "Marcador inválido, puntos negativos o partido ya cerrado previamente."
+  /api/docs/partidos/eliminar:
+    post:
+      tags:
+      - Partidos
+      summary: Eliminar partido finalizado
+      description: "Remueve del sistema un partido específico siempre y cuando su estado sea \"cerrado\", ejecutando una eliminación en cascada de sus apuestas asociadas."
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/partidos_eliminar_body"
+        required: true
+      responses:
+        "200":
+          description: El partido finalizado y sus apuestas asociadas se eliminaron correctamente del repositorio.
+          content:
+            text/html:
+              schema:
+                type: string
+        "400":
+          description: Intento fallido de eliminación (el partido no existe o se encuentra aún en estado ABIERTO).
+components:
+  schemas:
+    apuestas_guardar_body:
+      required:
+      - documento
+      - edad
+      - email
+      - monto
+      - nombre
+      - partidoId
+      - prediccion
+      - telefono
+      - tipoApuestaStr
+      - tipoIdentificacion
+      type: object
+      properties:
+        nombre:
+          type: string
+          description: Nombre completo del apostador.
+        tipoIdentificacion:
+          type: string
+          description: Tipo de documento de identidad del usuario.
+          enum:
+          - CC
+          - CE
+        documento:
+          type: integer
+          description: Número de documento de identificación del usuario (Integer en base de datos).
+        email:
+          type: string
+          description: Correo electrónico de contacto del apostador.
+          format: email
+        edad:
+          type: integer
+          description: Edad del usuario (debe ser mayor o igual a 18 años).
+        telefono:
+          type: string
+          description: Número de teléfono celular o de contacto.
+        partidoId:
+          type: integer
+          description: Identificador único (ID) del partido sobre el cual se realiza la apuesta.
+          format: int64
+        tipoApuestaStr:
+          type: string
+          description: Modalidad de juego elegida por el usuario.
+          enum:
+          - GANADOR
+          - PUNTOS
+        prediccion:
+          type: string
+          description: Predicción de la apuesta. Puede ser el nombre del equipo (para GANADOR) o la cantidad de puntos en formato de texto (para PUNTOS).
+        monto:
+          type: number
+          description: Cantidad de dinero total destinada a la apuesta (Mapeado como BigDecimal en Java).
+          format: double
+    partidos_liquidar_body:
+      required:
+      - partidoId
+      - puntosLocal
+      - puntosVisitante
+      type: object
+      properties:
+        partidoId:
+          type: integer
+          description: Identificador del partido que se va a cerrar.
+          format: int64
+        puntosLocal:
+          type: integer
+          description: Puntuación final obtenida por el equipo local.
+        puntosVisitante:
+          type: integer
+          description: Puntuación final obtenida por el equipo visitante (No se permiten empates).
+    partidos_eliminar_body:
+      required:
+      - partidoId
+      type: object
+      properties:
+        partidoId:
+          type: integer
+          description: Identificador único del partido cerrado que se desea remover de la base de datos.
+          format: int64
