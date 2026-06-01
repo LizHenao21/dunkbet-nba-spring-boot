@@ -12,6 +12,16 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Collections;
 
+
+/**
+ * Controlador de administración para la plataforma DunkBet.
+ * Esta clase se encarga de gestionar todas las operaciones del panel de control del administrador,
+ * incluyendo la autenticación, la creación de nuevos partidos de la NBA, el cierre de marcadores
+ * con la consecuente liquidación de apuestas, el listado de usuarios/apuestas y la eliminación segura
+ * de registros finalizados.
+ * * @author Lizeth Henao
+ */
+
 @Controller
 @RequestMapping("/admin")
 public class AdminController {

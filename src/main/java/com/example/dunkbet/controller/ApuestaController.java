@@ -11,6 +11,16 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.math.BigDecimal;
 
+
+/**
+ * Controlador encargado de la gestión de apuestas para los usuarios de la plataforma DunkBet.
+ * Esta clase maneja el flujo completo de las apuestas individuales, incluyendo la visualización y 
+ * actualización dinámica del formulario (apuestas por ganador o por puntos), el cálculo de ganancias 
+ * potenciales, el registro y validación de los datos del apostador, la consulta del historial de 
+ * apuestas mediante el documento de identidad y la liquidación de las mismas.
+ * * @author Lizeth Henao
+ */
+
 @Controller
 @RequestMapping("/apuestas")
 public class ApuestaController {

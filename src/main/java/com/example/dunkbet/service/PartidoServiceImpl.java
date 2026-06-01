@@ -9,6 +9,16 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Implementación de la capa de servicio para la gestión de partidos en DunkBet.
+ * Esta clase contiene la lógica operativa para el ciclo de vida de los encuentros deportivos,
+ * interactuando directamente con el repositorio. Garantiza de manera transaccional el almacenamiento 
+ * inmediato de datos mediante persistencia síncrona (saveAndFlush) y la eliminación segura de registros, 
+ * además de proveer métodos de lectura para búsquedas específicas por ID, listados globales y filtros 
+ * de partidos disponibles en estado abierto.
+ * * @author Lizeth Henao
+ */
+
 @Service
 public class PartidoServiceImpl implements PartidoService {
 

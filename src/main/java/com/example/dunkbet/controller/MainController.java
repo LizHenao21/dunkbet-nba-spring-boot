@@ -6,6 +6,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+/**
+ * Controlador principal de la plataforma DunkBet.
+ * Esta clase se encarga de gestionar el acceso a la página de inicio pública (home/index),
+ * sirviendo como el punto de entrada principal para los usuarios y cargando la lista completa 
+ * de partidos disponibles en el sistema para que puedan ser visualizados.
+ * * @author Lizeth Henao
+ */
+
+
 @Controller
 public class MainController {
 

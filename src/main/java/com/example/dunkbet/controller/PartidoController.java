@@ -8,6 +8,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+
+/**
+ * Controlador encargado de la gestión y ciclo de vida de los partidos en la plataforma DunkBet.
+ * Esta clase maneja las operaciones CRUD (Crear, Leer, Actualizar y Eliminar) de los encuentros deportivos.
+ * Sus responsabilidades incluyen listar los partidos, desplegar los formularios para el registro y la 
+ * edición de la información (aplicando validaciones como evitar que un equipo juegue contra sí mismo) 
+ * y procesar la eliminación de los registros en el sistema.
+ * * @author Lizeth Henao
+ */
+
+
 @Controller
 @RequestMapping("/partidos") 
 public class PartidoController {

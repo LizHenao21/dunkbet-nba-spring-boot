@@ -14,6 +14,15 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
+/**
+ * Entidad que representa una apuesta realizada en la plataforma DunkBet.
+ * Esta clase mapea la tabla "apuesta" en la base de datos y define los atributos clave de un ticket 
+ * de juego, tales como el usuario que apuesta, el partido involucrado, el tipo de apuesta (ganador o puntos), 
+ * la predicción, el monto invertido, el estado (pendiente, ganada o perdida), las ganancias calculadas 
+ * y la marca de tiempo del registro.
+ * * @author Lizeth Henao
+ */
+
 
 @Entity
 @Table(name = "apuesta")

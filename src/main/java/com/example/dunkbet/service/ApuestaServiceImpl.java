@@ -13,6 +13,15 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Implementación de la capa de servicio para la gestión de apuestas en DunkBet.
+ * Esta clase contiene la lógica de negocio detallada del sistema, controlando de manera transaccional 
+ * el registro de apuestas (creando dinámicamente al usuario si no existe), el cálculo de cuotas o ganancias 
+ * potenciales (multiplicadores de 1.9 para ganador y 1.8 para puntos), la consulta de historiales, 
+ * el filtrado analítico de ganadores o perdedores, y la liquidación masiva de estados de juego al cerrarse un partido.
+ * * @author Lizeth Henao
+ */
+
 @Service
 public class ApuestaServiceImpl implements ApuestaService {
 

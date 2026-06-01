@@ -7,6 +7,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * Controlador encargado de la gestión y visualización de los usuarios en la plataforma DunkBet.
+ * Esta clase maneja las peticiones relacionadas con los clientes del sistema, permitiendo 
+ * principalmente listar y exponer su información general en la vista correspondiente del panel.
+ * * @author Lizeth Henao
+ */
+
 @Controller
 @RequestMapping("/usuarios")
 public class UsuarioController {

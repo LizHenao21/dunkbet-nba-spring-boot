@@ -9,6 +9,17 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Implementación de la capa de servicio para la gestión de usuarios en DunkBet.
+ * Esta clase contiene la lógica operativa para administrar las cuentas de los apostadores,
+ * interactuando con el repositorio de usuarios de forma transaccional. Se encarga del guardado 
+ * síncrono mediante persistencia inmediata (saveAndFlush), listados globales, búsquedas por ID,
+ * y resuelve de manera robusta métodos sobrecargados de registro y búsqueda por documento, 
+ * encargándose de la conversión e interpretación de formatos tanto en datos de tipo String como Integer.
+ * * @author Lizeth Henao
+ */
+
+
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
 

@@ -12,6 +12,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+/**
+ * Entidad que representa un partido de baloncesto dentro de la plataforma DunkBet.
+ * Esta clase mapea la tabla "partido" en la base de datos, almacenando la información 
+ * crucial de cada encuentro: los equipos participante (local y visitante), la fecha, 
+ * la hora, el escenario deportivo, el estado actual del juego (abierto o cerrado), 
+ * el marcador final y el equipo que resultó ganador del compromiso.
+ * * @author Lizeth Henao
+ */
+
 @Entity
 @Table(name = "partido")
 public class Partido {

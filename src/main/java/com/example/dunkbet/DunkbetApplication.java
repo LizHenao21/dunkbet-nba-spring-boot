@@ -13,6 +13,15 @@ import com.example.dunkbet.repository.PartidoRepository;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+/**
+ * Clase principal de configuración y arranque de la aplicación DunkBet.
+ * Esta clase inicializa el contexto de Spring Boot y, mediante la interfaz CommandLineRunner, 
+ * provee un bloque de inicialización opcional para poblar la base de datos con registros de prueba 
+ * (usuarios iniciales y partidos próximos de la NBA) en caso de que el sistema se ejecute 
+ * en un entorno limpio sin datos previos.
+ * * @author Lizeth Henao
+ */
+
 @SpringBootApplication
 public class DunkbetApplication implements CommandLineRunner {
 

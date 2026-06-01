@@ -14,6 +14,16 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
+/**
+ * Entidad que representa a un usuario o apostador dentro de la plataforma DunkBet.
+ * Esta clase mapea la tabla "usuario" en la base de datos, almacenando los datos personales y de 
+ * contacto del cliente (nombre, tipo y número de documento, correo electrónico, edad y teléfono). 
+ * Adicionalmente, establece una relación de uno a muchos (OneToMany) para agrupar y gestionar 
+ * el historial de apuestas asociadas a cada cuenta.
+ * * @author Lizeth Henao
+ */
+
+
 @Entity
 @Table(name = "usuario")
 public class Usuario {
