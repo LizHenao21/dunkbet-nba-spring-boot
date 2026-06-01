@@ -7,7 +7,7 @@ A continuación, se presenta el enlace al video con la explicación detallada de
  **https://youtu.be/zxR73c3WEwg**
 
 
-##Contenido de la Entrega
+## Contenido de la Entrega
 
 Toda la documentación metodológica exigida en la rúbrica se encuentra organizada dentro de la carpeta `/docs`:
 
