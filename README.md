@@ -2,7 +2,7 @@
 
 Este proyecto ha sido desarrollado como la práctica final para la materia de **Técnicas de Programación y Laboratorio** de la Universidad de Antioquia.
 
-## Sustentación en Video
+## Video
 A continuación, se presenta el enlace al video con la explicación detallada del funcionamiento de la aplicación web: 
  **https://youtu.be/zxR73c3WEwg**
 
