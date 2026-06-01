@@ -1,4 +1,4 @@
-##DunkBet - Plataforma de Apuestas NBA
+## DunkBet - Plataforma de Apuestas NBA
 
 Este proyecto ha sido desarrollado como la práctica final para la materia de **Técnicas de Programación y Laboratorio** de la Universidad de Antioquia.
 
