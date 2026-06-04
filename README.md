@@ -4,7 +4,7 @@ Este proyecto ha sido desarrollado como la práctica final para la materia de **
 
 ## Video
 A continuación, se presenta el enlace al video con la explicación detallada del funcionamiento de la aplicación web: 
- **https://youtu.be/bM5r2Gd3K8k**
+ **https://drive.google.com/file/d/1tclwH0YrzBMfvOb7duNCF5EoZybdYzsx/view?usp=sharing**
 
 
 ## Contenido de la Entrega
