@@ -45,8 +45,8 @@ public class ApuestaController {
             @RequestParam("partidoId") Long partidoId,
             @RequestParam("tipoApuesta") String tipoApuesta,
             @RequestParam(value = "monto", required = false) BigDecimal monto,
-            @RequestParam(value = "prediccionEquipo", required = false) String prediccionEquipo, // <-- AGREGADO
-            @RequestParam(value = "prediccionPuntos", required = false) String prediccionPuntos, // <-- AGREGADO
+            @RequestParam(value = "prediccionEquipo", required = false) String prediccionEquipo,
+            @RequestParam(value = "prediccionPuntos", required = false) String prediccionPuntos,
             Model model) {
         
         Partido partido = partidoService.obtenerPorId(partidoId).orElse(null);
